@@ -1,0 +1,15 @@
+body {
+  font-family: sans-serif;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.timer {
+  font-size: 48px;
+  background: #fff;
+  padding: 20px 40px;
+  border-radius: 12px;
+  text-align: center;
+}

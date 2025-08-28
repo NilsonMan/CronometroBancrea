@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CronometroBancrea/static/css/main.4cde8465.css",
+    "main.js": "/CronometroBancrea/static/js/main.ce69166b.js",
+    "index.html": "/CronometroBancrea/index.html",
+    "main.4cde8465.css.map": "/CronometroBancrea/static/css/main.4cde8465.css.map",
+    "main.ce69166b.js.map": "/CronometroBancrea/static/js/main.ce69166b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4cde8465.css",
+    "static/js/main.ce69166b.js"
+  ]
+}
