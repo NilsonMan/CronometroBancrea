@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/CronometroBancrea/static/css/main.5507dffe.css",
+    "main.css": "/CronometroBancrea/static/css/main.60a57e05.css",
     "main.js": "/CronometroBancrea/static/js/main.4dc3dd12.js",
     "index.html": "/CronometroBancrea/index.html",
-    "main.5507dffe.css.map": "/CronometroBancrea/static/css/main.5507dffe.css.map",
+    "main.60a57e05.css.map": "/CronometroBancrea/static/css/main.60a57e05.css.map",
     "main.4dc3dd12.js.map": "/CronometroBancrea/static/js/main.4dc3dd12.js.map"
   },
   "entrypoints": [
-    "static/css/main.5507dffe.css",
+    "static/css/main.60a57e05.css",
     "static/js/main.4dc3dd12.js"
   ]
 }
