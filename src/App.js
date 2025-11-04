@@ -1,42 +1,41 @@
 import "./App.css";
 import React, { useEffect, useMemo, useState } from "react";
 
+// Hook para obtener parámetros de la URL
 function useQuery() {
   const { search } = window.location;
   return useMemo(() => new URLSearchParams(search), [search]);
 }
 
+// Función que calcula el tiempo inicial del cronómetro
 function handleGetTimer(duration = 150, dateInMiliseconds = null) {
   const finalDuration = duration ? parseInt(duration) : 150;
   const finalDateInMiliseconds = dateInMiliseconds ? parseInt(dateInMiliseconds) : null;
 
   if (finalDateInMiliseconds) {
     const now = Date.now();
-    const diff = finalDateInMiliseconds - now; // milisegundos restantes hasta la fecha
+    const diff = finalDateInMiliseconds - now;
 
     if (diff <= 0) {
-      // ya pasó la fecha
       return { timer: 0, message: "Se agotó el tiempo" };
     }
 
     const diffInSeconds = Math.floor(diff / 1000);
-
-    // si la fecha permite usar toda la duración → usar duration
-    // si no → usar el tiempo real que queda
     const timerValue = Math.min(finalDuration, diffInSeconds);
 
     return { timer: timerValue, message: null };
   }
 
-  // si no hay fecha → usar duración normal
   return { timer: finalDuration, message: null };
 }
 
-
+// Convierte segundos a formato mm:ss
 const handleGetTimerText = (currentTimer) => {
   const minutes = Math.floor(currentTimer / 60);
   const seconds = currentTimer % 60;
-  return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  return `${minutes.toString().padStart(2, "0")}:${seconds
+    .toString()
+    .padStart(2, "0")}`;
 };
 
 function App() {
@@ -49,7 +48,10 @@ function App() {
 
   // Inicializar timer
   useEffect(() => {
-    const { timer: currentTimer, message } = handleGetTimer(duration, dateInMiliseconds);
+    const { timer: currentTimer, message } = handleGetTimer(
+      duration,
+      dateInMiliseconds
+    );
 
     if (message) {
       setTimer(0);
@@ -66,31 +68,28 @@ function App() {
 
     const interval = setInterval(() => {
       setTimer((prev) => {
-        if (prev <= 1) {
+        const newTime = prev - 1;
+        if (newTime <= 0) {
           clearInterval(interval);
+          setTextTimer("Se agotó el tiempo");
           return 0;
         }
-        return prev - 1;
+        setTextTimer(handleGetTimerText(newTime));
+        return newTime;
       });
     }, 1000);
 
-    return () => clearInterval(interval); // limpiar al desmontar
+    return () => clearInterval(interval);
   }, [timer]);
 
-  // actualizar texto cada vez que timer cambia
-return (
-  <div
-    className={`timer ${textTimer === "Se agotó el tiempo" ? "timeout-message" : ""}`}
-    id="countdown"
-  >
-    {textTimer}
-  </div>
-);
-
-
-  // let date1 = new Date(); date1.setMinutes(date1.getMinutes() + 2); console.log(date1.getTime())
+  // Render principal
   return (
-    <div className="timer" id="countdown">
+    <div
+      className={`timer ${
+        textTimer === "Se agotó el tiempo" ? "timeout-message" : ""
+      }`}
+      id="countdown"
+    >
       {textTimer}
     </div>
   );

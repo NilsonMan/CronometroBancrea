@@ -53,18 +53,18 @@ button {
   display: grid;
 }
 
-/* ✅ Tamaño de fuente adaptable con límites */
+/* ✅ Tamaño de números como en la versión original */
 .timer {
-  font-size: clamp(28px, 4vw, 60px);
+  font-size: 100px; /* ← tamaño grande fijo */
   font-weight: bold;
   color: #222;
   text-align: center;
 }
 
-/* ✅ Mensaje de tiempo agotado más pequeño pero aún visible */
+/* ✅ Texto de “Se agotó el tiempo” con tamaño más pequeño */
 .timeout-message {
-  font-size: clamp(20px, 3vw, 40px);
-  color: red;
+  font-size: 40px;
+  color: rgb(0, 0, 0);
   text-align: center;
   white-space: nowrap;
 }
