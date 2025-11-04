@@ -78,13 +78,15 @@ function App() {
   }, [timer]);
 
   // actualizar texto cada vez que timer cambia
-  useEffect(() => {
-    if (timer > 0) {
-      setTextTimer(handleGetTimerText(timer));
-    } else if (timer === 0) {
-      setTextTimer("Se agotó el tiempo");
-    }
-  }, [timer]);
+return (
+  <div
+    className={`timer ${textTimer === "Se agotó el tiempo" ? "timeout-message" : ""}`}
+    id="countdown"
+  >
+    {textTimer}
+  </div>
+);
+
 
   // let date1 = new Date(); date1.setMinutes(date1.getMinutes() + 2); console.log(date1.getTime())
   return (
